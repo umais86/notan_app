@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TextFieldLabel extends StatelessWidget {
   final String label;
@@ -9,8 +10,8 @@ class TextFieldLabel extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       label,
-      style: const TextStyle(
-        fontSize: 16,
+      style: TextStyle(
+        fontSize: 16.sp,
         fontFamily: 'Outfit',
         fontWeight: FontWeight.w500,
       ),
