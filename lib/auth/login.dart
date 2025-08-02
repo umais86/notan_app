@@ -1,21 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:notoan_app/auth/login.dart';
 import 'package:notoan_app/components/text_field/pass_text_field.dart';
 import 'package:notoan_app/components/text_field/text_field.dart';
 import 'package:notoan_app/components/text_field/text_field_label.dart';
 import 'package:notoan_app/theme/colors.dart';
 import 'package:notoan_app/utils/buttons/custom_button.dart';
 
-class Signup extends StatefulWidget {
-  const Signup({super.key});
+class Login extends StatefulWidget {
+  const Login({super.key});
 
   @override
-  State<Signup> createState() => _SignupState();
+  State<Login> createState() => _LoginState();
 }
 
-class _SignupState extends State<Signup> {
-  final TextEditingController _usernameController = TextEditingController();
+class _LoginState extends State<Login> {
   final TextEditingController _passController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
 
@@ -31,7 +29,7 @@ class _SignupState extends State<Signup> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Create Account',
+                  'Login Account',
                   style: TextStyle(
                     fontSize: 22.sp,
                     fontFamily: 'Outfit',
@@ -40,7 +38,7 @@ class _SignupState extends State<Signup> {
                 ),
                 SizedBox(height: 4.h),
                 Text(
-                  'Start learning with create your account',
+                  'Please login with registered account',
                   style: TextStyle(
                     color: subColor,
                     fontFamily: 'Outfit',
@@ -48,14 +46,7 @@ class _SignupState extends State<Signup> {
                   ),
                 ),
                 SizedBox(height: 24.h),
-                TextFieldLabel(label: 'Username'),
-                SizedBox(height: 6.h),
-                CustomTextField(
-                  controller: _usernameController,
-                  hint: 'Create your username',
-                  iconPath: 'assets/icons/profile.png',
-                ),
-                SizedBox(height: 16.h),
+
                 TextFieldLabel(label: 'Email or Phone Number'),
                 SizedBox(height: 6.h),
                 CustomTextField(
@@ -70,16 +61,23 @@ class _SignupState extends State<Signup> {
                   controller: _passController,
                   hint: 'Enter your password',
                 ),
-                SizedBox(height: 24.h),
-                CustomElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (_) => Login()),
-                    );
-                  },
-                  label: 'Create Account',
+                SizedBox(height: 14.h),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      'Forgot Password?',
+                      style: TextStyle(
+                        color: txtGcolor,
+                        fontFamily: 'Outfit',
+                        fontSize: 16.sp,
+                      ),
+                    ),
+                  ),
                 ),
+                SizedBox(height: 24.h),
+                CustomElevatedButton(onPressed: () {}, label: 'Sign In'),
                 SizedBox(height: 20.h),
                 Center(
                   child: Text(
