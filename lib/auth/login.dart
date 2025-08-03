@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:notoan_app/auth/verification.dart';
+import 'package:notoan_app/auth/otp/verification.dart';
 import 'package:notoan_app/components/text_field/pass_text_field.dart';
 import 'package:notoan_app/components/text_field/text_field.dart';
 import 'package:notoan_app/components/text_field/text_field_label.dart';

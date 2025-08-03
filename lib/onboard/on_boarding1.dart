@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:notoan_app/auth/login.dart';
 import 'package:notoan_app/auth/signup.dart';
 import 'package:notoan_app/theme/colors.dart';
 import 'package:notoan_app/utils/buttons/custom_button.dart';
@@ -153,7 +154,12 @@ class _OnBoarding1State extends State<OnBoarding1> {
               ),
               SizedBox(height: 20.h),
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => Login()),
+                  );
+                },
                 child: Text(
                   'Already Have an Account',
                   style: TextStyle(
