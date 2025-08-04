@@ -69,7 +69,7 @@ class ProjectCard extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(16.r),
       child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
+        filter: ImageFilter.blur(sigmaX: 5, sigmaY: 4),
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
           decoration: BoxDecoration(
