@@ -134,7 +134,7 @@ class _HomePageState extends State<HomePage> {
                       ProjectCard(
                         imagePath: 'assets/images/work.png',
                         category: '5 days left',
-                        title: 'Resign for project cluster\nlanding page',
+                        title: 'Dashboard of laundry website',
                         isFavorite: true,
                         text: '40%',
                       ),
@@ -142,7 +142,7 @@ class _HomePageState extends State<HomePage> {
                       ProjectCard(
                         imagePath: 'assets/images/work.png',
                         category: '4 days left',
-                        title: 'Resign for project cluster\nlanding page',
+                        title: 'Polyglot-kid website',
                         isFavorite: false,
                         text: '50%',
                       ),
