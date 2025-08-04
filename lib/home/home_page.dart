@@ -13,10 +13,12 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final FocusNode _searchFocusNode = FocusNode();
+  final ScrollController _scrollController = ScrollController();
 
   @override
   void dispose() {
     _searchFocusNode.dispose();
+    _scrollController.dispose();
     super.dispose();
   }
 
@@ -32,6 +34,7 @@ class _HomePageState extends State<HomePage> {
             children: [
               Column(
                 children: [
+                  // Header
                   Container(
                     height: 350.h,
                     color: appbarColor,
@@ -106,35 +109,42 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                   ),
+                  Expanded(child: Container()),
                 ],
               ),
               Positioned(
                 top: 180.h,
-                left: 20.w,
-                right: 20.w,
-                child: Row(
-                  children: [
-                    Container(
-                      height: 300,
-                      width: 250,
-                      decoration: BoxDecoration(
-                        color: white,
-                        borderRadius: BorderRadius.circular(16.r),
+                left: 0,
+                right: 0,
+                child: SizedBox(
+                  height: 320.h,
+                  child: ListView(
+                    controller: _scrollController,
+                    scrollDirection: Axis.horizontal,
+                    padding: EdgeInsets.symmetric(horizontal: 12.w),
+                    children: [
+                      ProjectCard(
+                        imagePath: 'assets/images/work.png',
+                        category: 'Work',
+                        title: 'Resign for project cluster\nlanding page',
+                        isFavorite: false,
                       ),
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 10,
-                          vertical: 12,
-                        ),
-                        child: ProjectCard(
-                          imagePath: 'assets/images/work.png',
-                          category: 'Work',
-                          title: 'Resign for project cluster\nlanding page',
-                          isFavorite: false,
-                        ),
+                      SizedBox(width: 16.w),
+                      ProjectCard(
+                        imagePath: 'assets/images/work.png',
+                        category: 'Work',
+                        title: 'Resign for project cluster\nlanding page',
+                        isFavorite: true,
                       ),
-                    ),
-                  ],
+                      SizedBox(width: 16.w),
+                      ProjectCard(
+                        imagePath: 'assets/images/work.png',
+                        category: 'Work',
+                        title: 'Resign for project cluster\nlanding page',
+                        isFavorite: false,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],

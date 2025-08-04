@@ -1,3 +1,4 @@
+// nav_bar.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:notoan_app/home/home_page.dart';
@@ -20,7 +21,7 @@ class _NavBarState extends State<NavBar> {
   }
 
   final List<Widget> _pages = [
-    HomePage(),
+    const HomePage(),
     Container(
       color: Colors.white,
       child: const Center(child: Text('Your Task Page')),
@@ -50,7 +51,7 @@ class _NavBarState extends State<NavBar> {
       body: _pages[_selectedIndex],
       bottomNavigationBar: Container(
         height: 90.h,
-        decoration: BoxDecoration(color: Colors.white),
+        decoration: const BoxDecoration(color: Colors.white),
         child: Stack(
           alignment: Alignment.bottomCenter,
           children: [
@@ -63,17 +64,21 @@ class _NavBarState extends State<NavBar> {
                 Expanded(child: _buildNavItem(3)),
               ],
             ),
-            // Positioned FAB at the bottom center
             Positioned(
-              bottom: 13.h,
-              child: Container(
-                height: 60.h,
-                width: 60.w,
-                decoration: BoxDecoration(
-                  color: txtGcolor,
-                  shape: BoxShape.circle,
+              bottom: 15.h,
+              child: GestureDetector(
+                onTap: () {
+                  print('FAB tapped');
+                },
+                child: Container(
+                  height: 60.h,
+                  width: 60.w,
+                  decoration: BoxDecoration(
+                    color: txtGcolor,
+                    shape: BoxShape.circle,
+                  ),
+                  child: Icon(Icons.add, size: 32.sp, color: Colors.white),
                 ),
-                child: Icon(Icons.add, size: 32.sp, color: Colors.white),
               ),
             ),
           ],
@@ -86,26 +91,29 @@ class _NavBarState extends State<NavBar> {
     final bool isSelected = _selectedIndex == index;
     return GestureDetector(
       onTap: () => _onItemTapped(index),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Image.asset(
-            icons[index],
-            height: 24.h,
-            width: 24.w,
-            color: isSelected ? txtGcolor : const Color(0xFF5E606A),
-          ),
-          SizedBox(height: 4.h),
-          Text(
-            labels[index],
-            style: TextStyle(
+      child: Container(
+        color: Colors.transparent,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              icons[index],
+              height: 24.h,
+              width: 24.w,
               color: isSelected ? txtGcolor : const Color(0xFF5E606A),
-              fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-              fontSize: 12.sp,
             ),
-          ),
-        ],
+            SizedBox(height: 4.h),
+            Text(
+              labels[index],
+              style: TextStyle(
+                color: isSelected ? txtGcolor : const Color(0xFF5E606A),
+                fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                fontSize: 12.sp,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

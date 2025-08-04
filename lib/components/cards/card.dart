@@ -9,6 +9,7 @@ class ProjectCard extends StatelessWidget {
   final String title;
   final bool isFavorite;
   final VoidCallback? onFavoriteTap;
+  final Color? color;
 
   const ProjectCard({
     super.key,
@@ -17,26 +18,44 @@ class ProjectCard extends StatelessWidget {
     required this.title,
     this.isFavorite = false,
     this.onFavoriteTap,
+    this.color,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        // Image with overlay
-        _buildImageWithOverlay(),
-        SizedBox(height: 6.h),
-        // Project title
-        Text(
-          title,
-          style: TextStyle(
-            fontSize: 14.sp,
-            fontWeight: FontWeight.w700,
-            fontFamily: 'Outfit',
+    return Container(
+      width: 200.w,
+      decoration: BoxDecoration(
+        color: white,
+        borderRadius: BorderRadius.circular(16.r),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black12,
+            blurRadius: 8.r,
+            offset: Offset(0, 4.r),
           ),
+        ],
+      ),
+      child: Padding(
+        padding: EdgeInsets.all(12.w),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _buildImageWithOverlay(),
+            SizedBox(height: 6.h),
+            Text(
+              title,
+              style: TextStyle(
+                fontSize: 14.sp,
+                fontWeight: FontWeight.w700,
+                fontFamily: 'Outfit',
+              ),
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ],
         ),
-      ],
+      ),
     );
   }
 
@@ -48,12 +67,12 @@ class ProjectCard extends StatelessWidget {
           child: Image.asset(
             imagePath,
             height: 120.h,
-            width: double.infinity,
+            width: 176.w,
             fit: BoxFit.cover,
           ),
         ),
         Positioned(
-          bottom: 80.h,
+          bottom: 85.h,
           left: 10.w,
           right: 10.w,
           child: Row(
@@ -94,7 +113,7 @@ class ProjectCard extends StatelessWidget {
       onTap: onFavoriteTap,
       child: Icon(
         isFavorite ? Icons.favorite : Icons.favorite_border,
-        color: white,
+        color: isFavorite ? Colors.red : white,
         size: 25.sp,
       ),
     );
