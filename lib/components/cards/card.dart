@@ -10,6 +10,7 @@ class ProjectCard extends StatelessWidget {
   final bool isFavorite;
   final VoidCallback? onFavoriteTap;
   final Color? color;
+  final String text;
 
   const ProjectCard({
     super.key,
@@ -19,6 +20,7 @@ class ProjectCard extends StatelessWidget {
     this.isFavorite = false,
     this.onFavoriteTap,
     this.color,
+    required this.text,
   });
 
   @override
@@ -28,13 +30,6 @@ class ProjectCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: white,
         borderRadius: BorderRadius.circular(16.r),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black12,
-            blurRadius: 8.r,
-            offset: Offset(0, 4.r),
-          ),
-        ],
       ),
       child: Padding(
         padding: EdgeInsets.all(12.w),
@@ -52,6 +47,29 @@ class ProjectCard extends StatelessWidget {
               ),
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
+            ),
+            SizedBox(height: 6.h),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Progress',
+                  style: TextStyle(
+                    fontFamily: 'Outfit',
+                    fontSize: 14.sp,
+                    color: subColor,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                Text(
+                  text,
+                  style: TextStyle(
+                    fontFamily: 'Outfit',
+                    fontSize: 14.sp,
+                    color: Colors.black,
+                  ),
+                ),
+              ],
             ),
           ],
         ),
@@ -92,7 +110,7 @@ class ProjectCard extends StatelessWidget {
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
           decoration: BoxDecoration(
-            color: Colors.white.withValues(alpha: 0.3),
+            color: Colors.white.withValues(alpha: 0.6),
             borderRadius: BorderRadius.circular(12.r),
           ),
           child: Text(
