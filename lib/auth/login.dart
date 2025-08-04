@@ -4,7 +4,6 @@ import 'package:notoan_app/auth/otp/verification.dart';
 import 'package:notoan_app/components/text_field/pass_text_field.dart';
 import 'package:notoan_app/components/text_field/text_field.dart';
 import 'package:notoan_app/components/text_field/text_field_label.dart';
-import 'package:notoan_app/home/home_page.dart';
 import 'package:notoan_app/home/navbar/nav_bar.dart';
 import 'package:notoan_app/theme/colors.dart';
 import 'package:notoan_app/utils/buttons/custom_button.dart';
