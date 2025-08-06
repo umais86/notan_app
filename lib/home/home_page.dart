@@ -48,6 +48,7 @@ class _HomePageState extends State<HomePage> {
                           CustomAppBar(),
                           SizedBox(height: 16.h),
                           TextField(
+                            style: TextStyle(color: white),
                             focusNode: _searchFocusNode,
                             decoration: InputDecoration(
                               prefixIcon: Icon(Icons.search, color: white),

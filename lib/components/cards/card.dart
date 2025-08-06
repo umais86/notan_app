@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:notoan_app/theme/colors.dart';
 
-class ProjectCard extends StatelessWidget {
+class ProjectCard extends StatefulWidget {
   final String imagePath;
   final String category;
   final String title;
@@ -24,6 +24,50 @@ class ProjectCard extends StatelessWidget {
   });
 
   @override
+  State<ProjectCard> createState() => _ProjectCardState();
+}
+
+class _ProjectCardState extends State<ProjectCard>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _animation;
+  late double progressValue;
+
+  @override
+  void initState() {
+    super.initState();
+    progressValue = _calculateProgressValue(widget.text);
+
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1200),
+    );
+
+    _animation = Tween<double>(
+      begin: 0,
+      end: progressValue,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
+
+    _controller.forward();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  double _calculateProgressValue(String text) {
+    try {
+      final clean = text.replaceAll('%', '');
+      final percent = double.parse(clean);
+      return percent.clamp(0, 100) / 100;
+    } catch (e) {
+      return 0.0;
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container(
       width: 200.w,
@@ -39,7 +83,7 @@ class ProjectCard extends StatelessWidget {
             _buildImageWithOverlay(),
             SizedBox(height: 6.h),
             Text(
-              title,
+              widget.title,
               style: TextStyle(
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w700,
@@ -62,7 +106,7 @@ class ProjectCard extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  text,
+                  widget.text,
                   style: TextStyle(
                     fontFamily: 'Outfit',
                     fontSize: 14.sp,
@@ -71,6 +115,22 @@ class ProjectCard extends StatelessWidget {
                 ),
               ],
             ),
+            SizedBox(height: 6.h),
+            AnimatedBuilder(
+              animation: _animation,
+              builder: (context, child) {
+                return LinearProgressIndicator(
+                  borderRadius: BorderRadius.circular(4.r),
+                  value: _animation.value,
+                  backgroundColor: Colors.grey.shade300,
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                    widget.color ?? txtGcolor,
+                  ),
+                  minHeight: 5.h,
+                );
+              },
+            ),
+            SizedBox(height: 8.h),
           ],
         ),
       ),
@@ -83,7 +143,7 @@ class ProjectCard extends StatelessWidget {
         ClipRRect(
           borderRadius: BorderRadius.circular(16.r),
           child: Image.asset(
-            imagePath,
+            widget.imagePath,
             height: 120.h,
             width: 176.w,
             fit: BoxFit.cover,
@@ -110,11 +170,11 @@ class ProjectCard extends StatelessWidget {
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
           decoration: BoxDecoration(
-            color: Colors.white.withValues(alpha: 0.6),
+            color: Colors.white.withOpacity(0.6),
             borderRadius: BorderRadius.circular(12.r),
           ),
           child: Text(
-            category,
+            widget.category,
             style: TextStyle(
               color: Colors.black54,
               fontSize: 14.sp,
@@ -128,10 +188,10 @@ class ProjectCard extends StatelessWidget {
 
   Widget _buildFavoriteButton() {
     return GestureDetector(
-      onTap: onFavoriteTap,
+      onTap: widget.onFavoriteTap,
       child: Icon(
-        isFavorite ? Icons.favorite : Icons.favorite_border,
-        color: isFavorite ? Colors.red : white,
+        widget.isFavorite ? Icons.favorite : Icons.favorite_border,
+        color: widget.isFavorite ? Colors.red : white,
         size: 25.sp,
       ),
     );
