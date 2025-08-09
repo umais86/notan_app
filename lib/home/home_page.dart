@@ -110,7 +110,6 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                   ),
-                  Expanded(child: Container()),
                 ],
               ),
               Positioned(
@@ -118,7 +117,7 @@ class _HomePageState extends State<HomePage> {
                 left: 0,
                 right: 0,
                 child: SizedBox(
-                  height: 320.h,
+                  height: 255.h,
                   child: ListView(
                     controller: _scrollController,
                     scrollDirection: Axis.horizontal,
@@ -130,6 +129,7 @@ class _HomePageState extends State<HomePage> {
                         title: 'Resign for project cluster\nlanding page',
                         isFavorite: false,
                         text: '36%',
+                        text1: 'Alexnder',
                       ),
                       SizedBox(width: 16.w),
                       ProjectCard(
@@ -138,6 +138,7 @@ class _HomePageState extends State<HomePage> {
                         title: 'Dashboard of laundry website',
                         isFavorite: true,
                         text: '40%',
+                        text1: 'titu',
                       ),
                       SizedBox(width: 16.w),
                       ProjectCard(
@@ -146,11 +147,13 @@ class _HomePageState extends State<HomePage> {
                         title: 'Polyglot-kid website',
                         isFavorite: false,
                         text: '50%',
+                        text1: 'Ali',
                       ),
                     ],
                   ),
                 ),
               ),
+              SizedBox(height: 10.h),
             ],
           ),
         ),

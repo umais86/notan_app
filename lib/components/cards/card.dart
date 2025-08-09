@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:notoan_app/components/over_lap.dart';
 import 'package:notoan_app/theme/colors.dart';
 
 class ProjectCard extends StatefulWidget {
@@ -11,6 +12,7 @@ class ProjectCard extends StatefulWidget {
   final VoidCallback? onFavoriteTap;
   final Color? color;
   final String text;
+  final String text1;
 
   const ProjectCard({
     super.key,
@@ -21,6 +23,7 @@ class ProjectCard extends StatefulWidget {
     this.onFavoriteTap,
     this.color,
     required this.text,
+    required this.text1,
   });
 
   @override
@@ -70,7 +73,7 @@ class _ProjectCardState extends State<ProjectCard>
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 200.w,
+      width: 230.w,
       decoration: BoxDecoration(
         color: white,
         borderRadius: BorderRadius.circular(16.r),
@@ -131,6 +134,34 @@ class _ProjectCardState extends State<ProjectCard>
               },
             ),
             SizedBox(height: 8.h),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                OverlappingAvatar(
+                  avatars: [
+                    'assets/images/logo.png',
+                    'assets/images/onboard.png',
+                    'assets/images/work.png',
+                    'assets/images/logo.png',
+                  ],
+                ),
+                Row(
+                  children: [
+                    Icon(Icons.person, size: 20.r, color: subColor),
+                    Text(
+                      'Assigned by:',
+                      style: TextStyle(
+                        color: subColor,
+                        fontSize: 12.sp,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: 'Outfit',
+                      ),
+                    ),
+                    Text(widget.text1),
+                  ],
+                ),
+              ],
+            ),
           ],
         ),
       ),
@@ -145,7 +176,7 @@ class _ProjectCardState extends State<ProjectCard>
           child: Image.asset(
             widget.imagePath,
             height: 120.h,
-            width: 176.w,
+            width: 205.w,
             fit: BoxFit.cover,
           ),
         ),
@@ -170,7 +201,7 @@ class _ProjectCardState extends State<ProjectCard>
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
           decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.6),
+            color: Colors.white.withValues(alpha: 0.6),
             borderRadius: BorderRadius.circular(12.r),
           ),
           child: Text(
