@@ -1,6 +1,9 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:notoan_app/components/cards/card.dart';
+import 'package:notoan_app/components/cards/task_card.dart';
 import 'package:notoan_app/home/appbar/custom_app_bar.dart';
 import 'package:notoan_app/theme/colors.dart';
 
@@ -32,13 +35,15 @@ class _HomePageState extends State<HomePage> {
         body: SafeArea(
           child: Stack(
             children: [
-              Column(
-                children: [
-                  // Header
-                  Container(
-                    height: 350.h,
-                    color: appbarColor,
-                    child: Padding(
+              Container(height: 350.h, color: appbarColor),
+              // Foreground content
+              SingleChildScrollView(
+                padding: EdgeInsets.only(bottom: 16.h),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // Header area
+                    Padding(
                       padding: EdgeInsets.symmetric(
                         horizontal: 12.w,
                         vertical: 12.h,
@@ -109,51 +114,92 @@ class _HomePageState extends State<HomePage> {
                         ],
                       ),
                     ),
-                  ),
-                ],
-              ),
-              Positioned(
-                top: 180.h,
-                left: 0,
-                right: 0,
-                child: SizedBox(
-                  height: 255.h,
-                  child: ListView(
-                    controller: _scrollController,
-                    scrollDirection: Axis.horizontal,
-                    padding: EdgeInsets.symmetric(horizontal: 12.w),
-                    children: [
-                      ProjectCard(
-                        imagePath: 'assets/images/work.png',
-                        category: '2 days left',
-                        title: 'Resign for project cluster\nlanding page',
-                        isFavorite: false,
-                        text: '36%',
-                        text1: 'Alexnder',
+
+                    // Card list
+                    SizedBox(
+                      height: 255.h,
+                      child: ListView(
+                        controller: _scrollController,
+                        scrollDirection: Axis.horizontal,
+                        padding: EdgeInsets.symmetric(horizontal: 12.w),
+                        children: [
+                          ProjectCard(
+                            imagePath: 'assets/images/work.png',
+                            category: '2 days left',
+                            title: 'Resign for project cluster\nlanding page',
+                            isFavorite: false,
+                            text: '36%',
+                            text1: 'Alexnder',
+                          ),
+                          SizedBox(width: 16.w),
+                          ProjectCard(
+                            imagePath: 'assets/images/work.png',
+                            category: '5 days left',
+                            title: 'Dashboard of laundry website',
+                            isFavorite: true,
+                            text: '40%',
+                            text1: 'titu',
+                          ),
+                          SizedBox(width: 16.w),
+                          ProjectCard(
+                            imagePath: 'assets/images/work.png',
+                            category: '4 days left',
+                            title: 'Polyglot-kid website',
+                            isFavorite: false,
+                            text: '50%',
+                            text1: 'Ali',
+                          ),
+                        ],
                       ),
-                      SizedBox(width: 16.w),
-                      ProjectCard(
-                        imagePath: 'assets/images/work.png',
-                        category: '5 days left',
-                        title: 'Dashboard of laundry website',
-                        isFavorite: true,
-                        text: '40%',
-                        text1: 'titu',
+                    ),
+
+                    SizedBox(height: 20.h),
+
+                    // Today Task row AFTER cards
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 12.w),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Today Task',
+                            style: TextStyle(
+                              fontFamily: 'Outfit',
+                              color: Colors.black,
+                              fontSize: 16.sp,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          TextButton(
+                            onPressed: () {},
+                            child: Text(
+                              'See All',
+                              style: TextStyle(
+                                fontFamily: 'Outfit',
+                                color: txtGcolor,
+                                fontSize: 14.sp,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                      SizedBox(width: 16.w),
-                      ProjectCard(
-                        imagePath: 'assets/images/work.png',
-                        category: '4 days left',
-                        title: 'Polyglot-kid website',
-                        isFavorite: false,
-                        text: '50%',
-                        text1: 'Ali',
-                      ),
-                    ],
-                  ),
+                    ),
+                    TaskCard(
+                      priority: "Low",
+                      title: "Pixel Perfect Design",
+                      subtitle: "Design Landing Page",
+                      timeRange: "10.00 AM - 10.30 AM",
+                      status: "Completed",
+                      statusColor: Colors.green,
+                      avatars: [
+                        'assets/images/work.png',
+                        'assets/images/onboard.png',
+                        'assets/images/logo.png',
+                      ],
+                    ),
+                  ],
                 ),
               ),
-              SizedBox(height: 10.h),
             ],
           ),
         ),
