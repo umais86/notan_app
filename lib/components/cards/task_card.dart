@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:notoan_app/theme/colors.dart';
 
 class TaskCard extends StatelessWidget {
   final String priority;
@@ -23,110 +24,119 @@ class TaskCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      margin: EdgeInsets.symmetric(vertical: 8.w),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16.r),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black12,
-            blurRadius: 6.r,
-            offset: const Offset(0, 3),
-          ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Priority label
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
-            decoration: BoxDecoration(
-              color: Colors.blue.shade50,
-              borderRadius: BorderRadius.circular(8),
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 8.w),
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        margin: EdgeInsets.symmetric(vertical: 8.w),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16.r),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black12,
+              blurRadius: 6.r,
+              offset: const Offset(0, 3),
             ),
-            child: Text(
-              priority,
-              style: const TextStyle(
-                color: Colors.blue,
-                fontSize: 12,
-                fontWeight: FontWeight.w500,
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Priority label
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
+              decoration: BoxDecoration(
+                color: Colors.blue.shade50,
+                borderRadius: BorderRadius.circular(16.r),
+              ),
+              child: Text(
+                priority,
+                style: TextStyle(
+                  fontFamily: 'Outfit',
+                  color: Colors.blue,
+                  fontSize: 12.sp,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
             ),
-          ),
-          SizedBox(height: 8.h),
-          // Title + avatars
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      title,
-                      style: TextStyle(
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.w600,
+            SizedBox(height: 8.h),
+            // Title + avatars
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        title,
+                        style: TextStyle(
+                          fontFamily: 'Outfit',
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
-                    ),
-                    SizedBox(height: 4.h),
+                      SizedBox(height: 4.h),
+                      Text(
+                        subtitle,
+                        style: TextStyle(
+                          fontFamily: 'Outfit',
+                          fontSize: 14.sp,
+                          color: Colors.grey.shade600,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                // Overlapping avatars
+                SizedBox(
+                  width: (avatars.length * 10) + 40,
+                  height: 30.h,
+                  child: Stack(
+                    children: List.generate(avatars.length, (index) {
+                      return Positioned(
+                        left: index * 20.0,
+                        child: CircleAvatar(
+                          radius: 15.r,
+                          backgroundImage: AssetImage(avatars[index]),
+                        ),
+                      );
+                    }),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 12.h),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    Icon(Icons.access_time, size: 16.r, color: subColor),
+
+                    SizedBox(width: 4.w),
                     Text(
-                      subtitle,
+                      timeRange,
                       style: TextStyle(
-                        fontSize: 14.sp,
-                        color: Colors.grey.shade600,
+                        color: subColor,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: 'Outfit',
                       ),
                     ),
                   ],
                 ),
-              ),
-              // Overlapping avatars
-              SizedBox(
-                width: (avatars.length * 20) + 20, // overlap space
-                height: 40.h,
-                child: Stack(
-                  children: List.generate(avatars.length, (index) {
-                    return Positioned(
-                      left: index * 20.0, // overlap offset
-                      child: CircleAvatar(
-                        radius: 20.r,
-                        backgroundImage: AssetImage(avatars[index]),
-                      ),
-                    );
-                  }),
-                ),
-              ),
-            ],
-          ),
-          SizedBox(height: 12.h),
-          // Time + status
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                children: [
-                  Icon(Icons.access_time, size: 16.r, color: Colors.grey),
-
-                  SizedBox(width: 4.w),
-                  Text(
-                    timeRange,
-                    style: TextStyle(color: Colors.grey.shade600),
+                Text(
+                  status,
+                  style: TextStyle(
+                    color: txtGcolor,
+                    fontWeight: FontWeight.w500,
                   ),
-                ],
-              ),
-              Text(
-                status,
-                style: TextStyle(
-                  color: statusColor,
-                  fontWeight: FontWeight.w500,
                 ),
-              ),
-            ],
-          ),
-        ],
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

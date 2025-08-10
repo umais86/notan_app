@@ -38,7 +38,7 @@ class _HomePageState extends State<HomePage> {
               Container(height: 350.h, color: appbarColor),
               // Foreground content
               SingleChildScrollView(
-                padding: EdgeInsets.only(bottom: 16.h),
+                padding: EdgeInsets.only(bottom: 10.h),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -51,7 +51,7 @@ class _HomePageState extends State<HomePage> {
                       child: Column(
                         children: [
                           CustomAppBar(),
-                          SizedBox(height: 16.h),
+                          SizedBox(height: 10.h),
                           TextField(
                             style: TextStyle(color: white),
                             focusNode: _searchFocusNode,
@@ -153,7 +153,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
 
-                    SizedBox(height: 20.h),
+                    SizedBox(height: 10.h),
 
                     // Today Task row AFTER cards
                     Padding(
