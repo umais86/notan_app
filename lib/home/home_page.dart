@@ -157,7 +157,7 @@ class _HomePageState extends State<HomePage> {
 
                     // Today Task row AFTER cards
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 12.w),
+                      padding: EdgeInsets.symmetric(horizontal: 13.w),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
