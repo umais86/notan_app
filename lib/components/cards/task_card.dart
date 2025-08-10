@@ -98,7 +98,7 @@ class TaskCard extends StatelessWidget {
                       return Positioned(
                         left: index * 20.0,
                         child: CircleAvatar(
-                          radius: 15.r,
+                          radius: 13.r,
                           backgroundImage: AssetImage(avatars[index]),
                         ),
                       );
