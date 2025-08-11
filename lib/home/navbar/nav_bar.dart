@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:notoan_app/home/home_page.dart';
 import 'package:notoan_app/home/navbar/nav_bar_circle_btn.dart';
+import 'package:notoan_app/task_pages/your_task.dart';
 import 'package:notoan_app/theme/colors.dart';
 
 class NavBar extends StatefulWidget {
@@ -23,10 +24,7 @@ class _NavBarState extends State<NavBar> {
 
   final List<Widget> _pages = [
     const HomePage(),
-    Container(
-      color: Colors.white,
-      child: const Center(child: Text('Your Task Page')),
-    ),
+    const YourTask(),
     Container(
       color: Colors.white,
       child: const Center(child: Text('Calendar Page')),

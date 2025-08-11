@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:notoan_app/components/text_field/project_txt_field.dart';
-import 'package:notoan_app/components/text_field/text_field.dart';
 import 'package:notoan_app/components/text_field/text_field_label.dart';
 import 'package:notoan_app/theme/colors.dart';
+import 'package:notoan_app/utils/buttons/custom_button.dart';
 
 class NewProjectScreen extends StatelessWidget {
   final TextEditingController controller = TextEditingController();
@@ -24,7 +24,7 @@ class NewProjectScreen extends StatelessWidget {
         title: Text(
           'New Project',
           style: TextStyle(
-            color: Colors.black,
+            color: black,
             fontSize: 16.sp,
             fontWeight: FontWeight.w600,
             fontFamily: 'Outfit',
@@ -97,12 +97,54 @@ class NewProjectScreen extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 16.h),
+            SizedBox(height: 10.h),
             Container(
-              height: 100,
+              height: 45.h,
               width: double.infinity,
               decoration: BoxDecoration(color: white),
+              child: Row(
+                children: [
+                  CircleAvatar(
+                    radius: 20.r,
+                    backgroundImage: AssetImage('assets/images/logo.png'),
+                  ),
+                  SizedBox(width: 10.w),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'John Smith',
+                        style: TextStyle(
+                          fontSize: 14.sp,
+                          fontFamily: 'Outfit',
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      Text(
+                        'Product Manager',
+                        style: TextStyle(
+                          color: subColor,
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Spacer(),
+                  IconButton(
+                    onPressed: () {},
+                    icon: Icon(
+                      Icons.restore_from_trash,
+                      color: subColor,
+                      size: 26.r,
+                    ),
+                  ),
+                ],
+              ),
             ),
+            Spacer(),
+            CustomElevatedButton(onPressed: () {}, label: 'Create Project'),
+            SizedBox(height: 10.h),
           ],
         ),
       ),

@@ -36,11 +36,7 @@ class TodayTask extends StatelessWidget {
                         onPressed: () {
                           Navigator.pop(context);
                         },
-                        icon: Icon(
-                          Icons.arrow_back,
-                          size: 22.r,
-                          color: Colors.black,
-                        ),
+                        icon: Icon(Icons.arrow_back, size: 22.r, color: black),
                       ),
                       Text(
                         'Task Found (3)',
