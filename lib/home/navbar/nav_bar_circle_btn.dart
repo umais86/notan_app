@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:notoan_app/components/text_field/project_txt_field.dart';
+import 'package:notoan_app/components/text_field/text_field.dart';
+import 'package:notoan_app/components/text_field/text_field_label.dart';
 import 'package:notoan_app/theme/colors.dart';
 
 class NewProjectScreen extends StatelessWidget {
-  const NewProjectScreen({super.key});
+  final TextEditingController controller = TextEditingController();
+  NewProjectScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +32,46 @@ class NewProjectScreen extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      body: Column(children: [
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            TextFieldLabel(label: 'Title'),
+            SizedBox(height: 10.h),
+            ProjectTxtField(
+              controller: controller,
+              hint: 'Title Project',
+              iconPath: 'assets/icons/menu.png',
+            ),
+            SizedBox(height: 16.h),
+            TextFieldLabel(label: 'Cover'),
+            SizedBox(height: 10.h),
+            ProjectTxtField(
+              controller: controller,
+              hint: 'Cover Project',
+              iconPath: 'assets/icons/moun.png',
+            ),
+            SizedBox(height: 16.h),
+            TextFieldLabel(label: 'Group Task'),
+            SizedBox(height: 10.h),
+            ProjectTxtField(
+              controller: controller,
+              hint: 'Group Project',
+              iconPath: 'assets/icons/folder.png',
+              iconPath2: 'assets/icons/d-arrow.png',
+            ),
 
-        ],
+            SizedBox(height: 16.h),
+            TextFieldLabel(label: 'Cateogory'),
+            SizedBox(height: 10.h),
+            ProjectTxtField(
+              controller: controller,
+              hint: 'Category Project',
+              iconPath: 'assets/icons/r-square.png',
+            ),
+          ],
+        ),
       ),
     );
   }
