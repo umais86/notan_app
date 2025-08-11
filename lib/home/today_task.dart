@@ -30,13 +30,27 @@ class TodayTask extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'Task Found (3)',
-                    style: TextStyle(
-                      fontFamily: 'Outfit',
-                      fontSize: 18.sp,
-                      fontWeight: FontWeight.w600,
-                    ),
+                  Row(
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        icon: Icon(
+                          Icons.arrow_back,
+                          size: 22.r,
+                          color: Colors.black,
+                        ),
+                      ),
+                      Text(
+                        'Task Found (3)',
+                        style: TextStyle(
+                          fontFamily: 'Outfit',
+                          fontSize: 18.sp,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ],
                   ),
                   SizedBox(height: 12.h),
                   TaskCard(

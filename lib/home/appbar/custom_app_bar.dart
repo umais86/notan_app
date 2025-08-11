@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:notoan_app/home/notification/notification.dart';
 import 'package:notoan_app/theme/colors.dart';
 
 class CustomAppBar extends StatefulWidget {
@@ -57,10 +58,18 @@ class _CustomAppBarState extends State<CustomAppBar> {
             CircleAvatar(
               radius: 25.r,
               backgroundColor: Colors.black12,
-              child: Icon(
-                Icons.notifications_none,
-                size: 28,
-                color: Colors.white,
+              child: IconButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => NotificationPage()),
+                  );
+                },
+                icon: Icon(
+                  Icons.notifications_none,
+                  size: 28,
+                  color: Colors.white,
+                ),
               ),
             ),
           ],
