@@ -1,10 +1,9 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:notoan_app/components/cards/card.dart';
 import 'package:notoan_app/components/cards/task_card.dart';
 import 'package:notoan_app/home/appbar/custom_app_bar.dart';
+import 'package:notoan_app/home/today_task.dart';
 import 'package:notoan_app/theme/colors.dart';
 
 class HomePage extends StatefulWidget {
@@ -50,40 +49,9 @@ class _HomePageState extends State<HomePage> {
                       ),
                       child: Column(
                         children: [
-                          CustomAppBar(),
+                          CustomAppBar(hint: 'Search your task'),
                           SizedBox(height: 10.h),
-                          TextField(
-                            style: TextStyle(color: white),
-                            focusNode: _searchFocusNode,
-                            decoration: InputDecoration(
-                              prefixIcon: Icon(Icons.search, color: white),
-                              suffixIcon: IconButton(
-                                onPressed: () {},
-                                icon: Image.asset(
-                                  'assets/icons/filter.png',
-                                  height: 24.h,
-                                  width: 24.w,
-                                  color: white,
-                                ),
-                              ),
-                              hint: Text(
-                                'Search your task',
-                                style: TextStyle(
-                                  fontSize: 14.sp,
-                                  fontFamily: 'Outfit',
-                                  color: white,
-                                ),
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(color: subColor),
-                                borderRadius: BorderRadius.circular(16.r),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(16.r),
-                                borderSide: BorderSide(color: subColor),
-                              ),
-                            ),
-                          ),
+
                           SizedBox(height: 10.h),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -104,7 +72,7 @@ class _HomePageState extends State<HomePage> {
                                   style: TextStyle(
                                     color: txtGcolor,
                                     fontFamily: 'Outfit',
-                                    fontSize: 16.sp,
+                                    fontSize: 14.sp,
                                     fontWeight: FontWeight.w400,
                                   ),
                                 ),
@@ -171,7 +139,12 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                           TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (_) => TodayTask()),
+                              );
+                            },
                             child: Text(
                               'See All',
                               style: TextStyle(
@@ -184,18 +157,28 @@ class _HomePageState extends State<HomePage> {
                         ],
                       ),
                     ),
-                    TaskCard(
-                      priority: "Low",
-                      title: "Pixel Perfect Design",
-                      subtitle: "Design Landing Page",
-                      timeRange: "10.00 AM - 10.30 AM",
-                      status: "Completed",
-                      statusColor: Colors.green,
-                      avatars: [
-                        'assets/images/work.png',
-                        'assets/images/onboard.png',
-                        'assets/images/logo.png',
-                      ],
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (_) => TodayTask()),
+                        );
+                      },
+                      child: TaskCard(
+                        priority: "Low",
+                        title: "Pixel Perfect Design",
+                        subtitle: "Design Landing Page",
+                        timeRange: "10.00 AM - 10.30 AM",
+                        status: "Completed",
+                        statusColor: Colors.green,
+                        avatars: [
+                          'assets/images/work.png',
+                          'assets/images/onboard.png',
+                          'assets/images/logo.png',
+                        ],
+                        priorityColor: Colors.blue.shade50,
+                        priorityColorbg: Colors.blue,
+                      ),
                     ),
                   ],
                 ),
