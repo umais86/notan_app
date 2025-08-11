@@ -145,6 +145,7 @@ class NotificationTile extends StatelessWidget {
                       ],
                     ),
                   ),
+
                   PopupMenuItem(
                     value: "remove",
                     child: Row(

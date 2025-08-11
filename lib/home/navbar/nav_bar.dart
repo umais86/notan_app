@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:notoan_app/home/home_page.dart';
+import 'package:notoan_app/home/navbar/nav_bar_circle_btn.dart';
 import 'package:notoan_app/theme/colors.dart';
 
 class NavBar extends StatefulWidget {
@@ -68,7 +69,10 @@ class _NavBarState extends State<NavBar> {
               bottom: 15.h,
               child: GestureDetector(
                 onTap: () {
-                  print('FAB tapped');
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => NewProjectScreen()),
+                  );
                 },
                 child: Container(
                   height: 60.h,
