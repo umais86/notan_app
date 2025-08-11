@@ -69,6 +69,39 @@ class NewProjectScreen extends StatelessWidget {
               controller: controller,
               hint: 'Category Project',
               iconPath: 'assets/icons/r-square.png',
+              iconPath2: 'assets/icons/d-arrow.png',
+            ),
+            SizedBox(height: 16.h),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Assign User',
+                  style: TextStyle(
+                    fontSize: 18.sp,
+                    fontWeight: FontWeight.w600,
+                    fontFamily: 'Outfit',
+                  ),
+                ),
+                TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    'Add User',
+                    style: TextStyle(
+                      color: txtGcolor,
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w600,
+                      fontFamily: 'Outfit',
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 16.h),
+            Container(
+              height: 100,
+              width: double.infinity,
+              decoration: BoxDecoration(color: white),
             ),
           ],
         ),
