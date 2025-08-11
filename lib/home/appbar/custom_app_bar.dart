@@ -55,7 +55,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
             ),
             Spacer(),
             CircleAvatar(
-              radius: 25,
+              radius: 25.r,
               backgroundColor: Colors.black12,
               child: Icon(
                 Icons.notifications_none,

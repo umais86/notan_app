@@ -13,7 +13,6 @@ class TodayTask extends StatelessWidget {
       backgroundColor: white,
       body: SafeArea(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
             Container(
@@ -29,6 +28,7 @@ class TodayTask extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     'Task Found (3)',
@@ -43,7 +43,7 @@ class TodayTask extends StatelessWidget {
                     priority: 'Low',
                     title: 'Pixel Perfect Design',
                     subtitle: 'Design Landing Page',
-                    timeRange: '10.00 AM -10.30 AM',
+                    timeRange: '10.00 AM - 10.30 AM',
                     status: 'Completed',
                     statusColor: txtGcolor,
                     avatars: [
@@ -53,6 +53,39 @@ class TodayTask extends StatelessWidget {
                     ],
                     priorityColor: Colors.blue,
                     priorityColorbg: Colors.blue.shade50,
+                  ),
+
+                  SizedBox(height: 10.h),
+                  TaskCard(
+                    priority: 'High',
+                    title: 'Wordpress Conversion',
+                    subtitle: 'Akoya Website',
+                    timeRange: '11.00 AM - 1.30 PM',
+                    status: 'Remaining',
+                    statusColor: Colors.redAccent,
+                    avatars: [
+                      'assets/images/work.png',
+                      'assets/images/onboard.png',
+                      'assets/images/logo.png',
+                    ],
+                    priorityColor: Colors.red,
+                    priorityColorbg: Colors.red.shade50,
+                  ),
+                  SizedBox(height: 10.h),
+                  TaskCard(
+                    priority: 'High',
+                    title: 'UI/UX',
+                    subtitle: 'Akoya App',
+                    timeRange: '1.30 PM - 2.30 PM',
+                    status: 'Remaining',
+                    statusColor: Colors.redAccent,
+                    avatars: [
+                      'assets/images/work.png',
+                      'assets/images/onboard.png',
+                      'assets/images/logo.png',
+                    ],
+                    priorityColor: Colors.red,
+                    priorityColorbg: Colors.red.shade50,
                   ),
                 ],
               ),

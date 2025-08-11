@@ -9,8 +9,9 @@ class TaskCard extends StatelessWidget {
   final String timeRange;
   final String status;
   final Color priorityColor;
+  final Color priorityColorbg;
   final Color statusColor;
-  final List<String> avatars; 
+  final List<String> avatars;
 
   const TaskCard({
     super.key,
@@ -20,7 +21,9 @@ class TaskCard extends StatelessWidget {
     required this.timeRange,
     required this.status,
     required this.statusColor,
-    required this.avatars, required this.priorityColor,
+    required this.avatars,
+    required this.priorityColor,
+    required this.priorityColorbg,
   });
 
   @override
@@ -39,14 +42,14 @@ class TaskCard extends StatelessWidget {
           Container(
             padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
             decoration: BoxDecoration(
-              color: ,
+              color: priorityColorbg,
               borderRadius: BorderRadius.circular(16.r),
             ),
             child: Text(
               priority,
               style: TextStyle(
                 fontFamily: 'Outfit',
-                color: Colors.blue,
+                color: priorityColor,
                 fontSize: 12.sp,
                 fontWeight: FontWeight.w500,
               ),
@@ -120,7 +123,10 @@ class TaskCard extends StatelessWidget {
               ),
               Text(
                 status,
-                style: TextStyle(color: txtGcolor, fontWeight: FontWeight.w500),
+                style: TextStyle(
+                  color: statusColor,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
             ],
           ),
