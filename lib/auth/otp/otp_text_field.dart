@@ -44,7 +44,7 @@ class _OtpTextFieldState extends State<OtpTextField> {
   Widget _buildOtpBox(int index) {
     return Container(
       width: 50.w,
-      height: 49.h,
+      height: 50.h,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(12.r),
