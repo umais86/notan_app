@@ -26,7 +26,7 @@ class _SignupState extends State<Signup> {
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 22),
+            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 22.h),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
